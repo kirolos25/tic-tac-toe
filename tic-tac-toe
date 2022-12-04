@@ -1,18 +1,25 @@
-data segment       
-    new_line db 13, 10, "$"
-    
-    game_draw db "_|_|_", 13, 10
-              db "_|_|_", 13, 10
-              db "_|_|_", 13, 10, "$"    
-                  
-    game_pointer db 9 DUP(?)  
-    
-    win_flag db 0 
-    player db "0$" 
-    
-    game_over_message db "game over", 13, 10, "$"    
-    game_start_message db "start", 13, 10, "$"
-    player_message db "PLAYER $"   
-    win_message db " WIN!$"   
-    type_message db "TYPE A POSITION: $"
-ends
+.MODEL SMALL
+.STACK 500H
+.DATA
+PAK DB 'Press any key to continue...$'
+; CELL MARK FOR PLAYERS
+PC1 DB ' (X)$'
+PC2 DB ' (O)$'
+
+; BOARD LINES -------
+L1 DB '   |   |   $'
+L2 DB '-----------$'
+N1 DB ' | $'
+; -------------------
+
+; CELL NUMBERS ------ , the player will choese the place to play
+C1 DB '1$'
+C2 DB '2$'
+C3 DB '3$'
+C4 DB '4$'
+C5 DB '5$'
+C6 DB '6$'
+C7 DB '7$'
+C8 DB '8$'
+C9 DB '9$
+;----------
