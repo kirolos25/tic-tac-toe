@@ -1,1 +1,18 @@
-
+data segment       
+    new_line db 13, 10, "$"
+    
+    game_draw db "_|_|_", 13, 10
+              db "_|_|_", 13, 10
+              db "_|_|_", 13, 10, "$"    
+                  
+    game_pointer db 9 DUP(?)  
+    
+    win_flag db 0 
+    player db "0$" 
+    
+    game_over_message db "game over", 13, 10, "$"    
+    game_start_message db "start", 13, 10, "$"
+    player_message db "PLAYER $"   
+    win_message db " WIN!$"   
+    type_message db "TYPE A POSITION: $"
+ends
