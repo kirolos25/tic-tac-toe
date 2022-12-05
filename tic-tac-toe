@@ -23,3 +23,29 @@ C7 DB '7$'
 C8 DB '8$'
 C9 DB '9$
 ;----------
+; PLAYER NO. , MOVES AND CHECK FLAGS FOR IF THE GAME IS WON OR DRAWN
+PLAYER DB 50, '$'
+MOVES DB 0
+DONE DB 0
+DR DB 0
+
+; INPUT SECTION PROMTS -------------------------
+INP DB 32, ':: Enter cell no. : $'
+TKN DB 'This cell is taken! Press any key...$'
+
+; CURRENT MARK (X/O) ---------------------------
+CUR DB 88
+
+; FINAL MESSAGES -------------------------------
+W1 DB 'Player $'
+W2 DB ' won the game!$'
+DRW DB 'The game is draw!$'
+
+; TRY AGAIN PROMPT MESSAGES -----------------------------
+TRA DB 'Want to play again? (y/n): $'
+WI DB  32, 32, 32, 'Wrong input! Press any key...   $'
+
+; THIS LINE IS USED TO OVERWIRTE A LINE TO CLEAN THE AREA
+EMP DB '                                        $'
+
+;--------------------------------------------------------
