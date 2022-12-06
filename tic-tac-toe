@@ -49,3 +49,26 @@ WI DB  32, 32, 32, 'Wrong input! Press any key...   $'
 EMP DB '                                        $'
 
 ;--------------------------------------------------------
+.CODE
+MAIN PROC
+MOV AX, @DATA
+MOV DS, AX
+
+; ---------- INITIALIZE ---------------------
+
+INIT:
+
+MOV PLAYER, 50     ; INITIALIZING ALL VARIABLES
+MOV MOVES, 0
+MOV DONE, 0
+MOV DR, 0
+
+MOV C1, 49
+MOV C2, 50
+MOV C3, 51
+MOV C4, 52
+MOV C5, 53
+MOV C6, 54
+MOV C7, 55
+MOV C8, 56
+MOV C9, 57
