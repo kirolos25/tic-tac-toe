@@ -424,3 +424,103 @@ INT 10H
 LEA DX, L1
 MOV AH, 9
 INT 21H
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 12
+MOV DL, 30
+INT 10H
+
+
+LEA DX, L2
+MOV AH, 9
+INT 21H
+
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 13
+MOV DL, 30
+INT 10H
+
+LEA DX, L1
+MOV AH, 9
+INT 21H
+
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 14
+MOV DL, 30
+INT 10H
+
+MOV AH, 2
+MOV DL, 32
+INT 21H
+
+
+; --------------------------------
+; CELL 7
+
+LEA DX, C7
+MOV AH, 9
+INT 21H
+
+LEA DX, N1
+MOV AH, 9
+INT 21H
+
+; CELL 8
+
+LEA DX, C8
+MOV AH, 9
+INT 21H
+
+LEA DX, N1
+MOV AH, 9
+INT 21H
+
+; CELL 9
+
+LEA DX, C9
+MOV AH, 9
+INT 21H
+
+; ---------------------------------
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 15
+MOV DL, 30
+INT 10H
+
+
+LEA DX, L1
+MOV AH, 9
+INT 21H
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 16
+MOV DL, 20
+INT 10H
+
+
+CMP DONE, 1
+JZ VICTORY
+
+CMP DR, 1
+JZ DRAW
+
+; ------------ END OF BOARD -------
+
+
+
+
+; ------------ INPUT --------------
+
+INPUT:
+
+LEA DX, W1
+MOV AH, 9
+INT 21H
