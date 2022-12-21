@@ -366,3 +366,61 @@ LEA DX, L2
 MOV AH, 9
 INT 21H
 
+; SET CURSOR
+MOV AH, 2
+MOV DH, 9
+MOV DL, 30
+INT 10H
+
+LEA DX, L1
+MOV AH, 9
+INT 21H
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 10
+MOV DL, 30
+INT 10H
+
+MOV AH, 2
+MOV DL, 32
+INT 21H
+
+; --------------------------------
+; CELL 4
+
+LEA DX, C4
+MOV AH, 9
+INT 21H
+
+LEA DX, N1
+MOV AH, 9
+INT 21H
+
+; CELL 5
+
+LEA DX, C5
+MOV AH, 9
+INT 21H
+
+LEA DX, N1
+MOV AH, 9
+INT 21H
+
+; CELL 6
+
+LEA DX, C6
+MOV AH, 9
+INT 21H
+
+; ---------------------------------
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 11
+MOV DL, 30
+INT 10H
+
+LEA DX, L1
+MOV AH, 9
+INT 21H
