@@ -58,6 +58,8 @@ p22 DB '2$'
 MAIN PROC
 MOV AX, @DATA
 MOV DS, AX
+
+
 ; ------------ PLAYER ----------
 PLRCHANGE:
 
@@ -75,9 +77,7 @@ P2:
 MOV PLAYER, 50
 MOV CUR, 'o'
 JMP BOARD
-
 ; ---------- INITIALIZE ---------------------
-
 INIT:
 
 MOV PLAYER, 50     ; INITIALIZING ALL VARIABLES
@@ -154,11 +154,11 @@ MOV AH, 2
 MOV BH, 0
 MOV DH, 8
 MOV DL, 38
-INT 10H 
+INT 10H
+
 LEA DX, N1
 MOV AH, 9
 INT 21H
-
 ; SET CURSOR
 MOV AH, 2
 MOV BH, 0
@@ -188,21 +188,22 @@ jmp  TRYAGAIN
 
 
 ; ------------ VICTORY ------------------------
-
 VICTORY:
-
 
 LEA DX, W1
 MOV AH, 9
 INT 21H
 
 LEA DX, PLAYER
+
 MOV AH, 9
 INT 21H
+
 
 LEA DX, W2
 MOV AH, 9
 INT 21H
+
 
 ; SET CURSOR
 MOV AH, 2
@@ -216,6 +217,7 @@ INT 21H
 
 MOV AH, 7    ; INPUT WITHOUT ECHO
 INT 21H
+jmp dis
 
 JMP TRYAGAIN
 
@@ -226,7 +228,9 @@ DRAW:
 LEA DX, DRW
 MOV AH, 9
 INT 21H
-jmp dis
+
+
+
 ; SET CURSOR
 MOV AH, 2
 MOV DH, 17
@@ -240,7 +244,7 @@ INT 21H
 MOV AH, 7   ; INPUT WITHOUT ECHO
 INT 21H
 
-JMP TRYAGAIN
+JMP dis
 
 
 
@@ -377,6 +381,10 @@ JMP BOARD
 
 JMP EXIT
 
+
+
+
+
 ; ------------- BOARD ----------
 BOARD:
 
@@ -445,6 +453,7 @@ INT 10H
 LEA DX, L2
 MOV AH, 9
 INT 21H
+
 
 ; SET CURSOR
 MOV AH, 2
@@ -530,7 +539,6 @@ MOV AH, 2
 MOV DH, 14
 MOV DL, 31
 INT 10H
-
 
 
 ; --------------------------------
@@ -810,7 +818,6 @@ C9U:
 CMP C9, 'x'   ; CHECKING IF THE CELL IS ALREADY 'X'
 JZ TAKEN
 CMP C9, 'o'   ; CHECKING IF THE CELL IS ALREADY 'O'
-JZ TAKEN
 JZ TAKEN
 
 MOV C9, CL
