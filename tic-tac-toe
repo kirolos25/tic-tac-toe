@@ -48,7 +48,10 @@ WI DB  32, 32, 32, 'Wrong input! Press any key...   $'
 
 ; THIS LINE IS USED TO OVERWIRTE A LINE TO CLEAN THE AREA
 EMP DB '                                        $'
-
+p1w DB '0$'  
+p2w DB '0$'  
+p11 DB '1$'
+p22 DB '2$
 ;--------------------------------------------------------
 
 .CODE
@@ -96,7 +99,115 @@ JMP PLRCHANGE
 
 ; ---------- INITIALIZATION ENDS --------------
 
+win2:
+   inc p2w  
+   JMP victory
 
+
+
+
+win:
+cmp PLAYER,50
+jz win2
+inc p1w 
+jmp victory
+dis:
+; CLEAR SCREEN
+MOV AX,0600H
+MOV BH,07H
+MOV CX,0000H
+MOV DX,184FH
+INT 10H 
+; SET CURSOR
+MOV AH, 2
+MOV BH, 0
+MOV DH, 6
+MOV DL, 30
+INT 10H
+LEA DX, W1
+MOV AH, 9
+INT 21H
+LEA DX, p11
+MOV AH, 9
+INT 21H
+LEA DX,N1
+MOV AH, 9
+INT 21H  
+LEA DX, w1
+MOV AH, 9
+INT 21H
+LEA DX, p22
+MOV AH, 9
+INT 21H 
+; SET CURSOR
+MOV AH, 2
+MOV BH, 0
+MOV DH, 7
+MOV DL, 30
+INT 10H
+
+lEA DX, p1w
+MOV AH, 9
+INT 21H 
+
+LEA DX, N1
+MOV AH, 9
+INT 21H
+
+LEA DX, p2w
+MOV AH, 9
+INT 21H   
+; SET CURSOR
+MOV AH, 2
+MOV BH, 0
+MOV DH, 8
+MOV DL, 30
+INT 10H
+LEA DX, PAK  ; PRESS ANY KEY
+MOV AH, 9
+INT 21H
+
+MOV AH, 7    ; INPUT WITHOUT ECHO
+INT 21H 
+
+
+
+jmp  TRYAGAIN 
+
+
+; ------------ VICTORY ------------------------
+VICTORY:
+
+LEA DX, W1
+MOV AH, 9
+INT 21H
+
+LEA DX, PLAYER 
+
+MOV AH, 9
+INT 21H
+
+
+LEA DX, W2
+MOV AH, 9
+INT 21H 
+
+
+; SET CURSOR
+MOV AH, 2
+MOV DH, 17
+MOV DL, 28
+INT 10H
+
+LEA DX, PAK  ; PRESS ANY KEY
+MOV AH, 9
+INT 21H
+
+MOV AH, 7    ; INPUT WITHOUT ECHO
+INT 21H 
+jmp dis
+
+JMP TRYAGAIN
 
 
 ; ------------ VICTORY ------------------------
@@ -138,9 +249,7 @@ DRAW:
 LEA DX, DRW
 MOV AH, 9
 INT 21H
-
-
-
+jmp dis
 ; SET CURSOR
 MOV AH, 2
 MOV DH, 17
@@ -504,7 +613,7 @@ INT 10H
 
 
 CMP DONE, 1
-JZ VICTORY
+JZ win
 
 CMP DR, 1
 JZ DRAW
@@ -823,4 +932,3 @@ MOV AH, 4CH
 INT 21H
 MAIN ENDP
 END MAIN
-
