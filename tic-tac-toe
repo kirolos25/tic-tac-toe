@@ -51,7 +51,7 @@ EMP DB '                                        $'
 p1w DB '0$'  
 p2w DB '0$'  
 p11 DB '1$'
-p22 DB '2$
+p22 DB '2$'
 ;--------------------------------------------------------
 
 .CODE
@@ -185,41 +185,6 @@ INT 21H
 
 
 jmp  TRYAGAIN 
-
-
-; ------------ VICTORY ------------------------
-VICTORY:
-
-LEA DX, W1
-MOV AH, 9
-INT 21H
-
-LEA DX, PLAYER 
-
-MOV AH, 9
-INT 21H
-
-
-LEA DX, W2
-MOV AH, 9
-INT 21H 
-
-
-; SET CURSOR
-MOV AH, 2
-MOV DH, 17
-MOV DL, 28
-INT 10H
-
-LEA DX, PAK  ; PRESS ANY KEY
-MOV AH, 9
-INT 21H
-
-MOV AH, 7    ; INPUT WITHOUT ECHO
-INT 21H 
-jmp dis
-
-JMP TRYAGAIN
 
 
 ; ------------ VICTORY ------------------------
