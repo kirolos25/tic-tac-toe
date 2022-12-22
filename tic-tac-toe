@@ -143,16 +143,28 @@ INT 21H
 MOV AH, 2
 MOV BH, 0
 MOV DH, 7
-MOV DL, 30
+MOV DL, 33
 INT 10H
 
 lEA DX, p1w
 MOV AH, 9
 INT 21H 
-
+; SET CURSOR
+MOV AH, 2
+MOV BH, 0
+MOV DH, 8
+MOV DL, 38
+INT 10H 
 LEA DX, N1
 MOV AH, 9
 INT 21H
+
+; SET CURSOR
+MOV AH, 2
+MOV BH, 0
+MOV DH, 8
+MOV DL, 44
+INT 10H
 
 LEA DX, p2w
 MOV AH, 9
@@ -424,12 +436,9 @@ INT 21H
 ; SET CURSOR
 MOV AH, 2
 MOV DH, 7
-MOV DL, 30
+MOV DL, 31
 INT 10H
 
-MOV AH, 2
-MOV DL, 32
-INT 21H
 
 ; --------------------------------
 ; CELL 1
@@ -485,12 +494,9 @@ INT 21H
 ; SET CURSOR
 MOV AH, 2
 MOV DH, 10
-MOV DL, 30
+MOV DL, 31
 INT 10H
 
-MOV AH, 2
-MOV DL, 32
-INT 21H
 
 ; --------------------------------
 ; CELL 4
@@ -557,12 +563,9 @@ INT 21H
 ; SET CURSOR
 MOV AH, 2
 MOV DH, 14
-MOV DL, 30
+MOV DL, 31
 INT 10H
 
-MOV AH, 2
-MOV DL, 32
-INT 21H
 
 
 ; --------------------------------
