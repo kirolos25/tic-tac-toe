@@ -55,6 +55,23 @@ EMP DB '                                        $'
 MAIN PROC
 MOV AX, @DATA
 MOV DS, AX
+; ------------ PLAYER ----------
+PLRCHANGE:
+
+CMP PLAYER, 49
+JZ P2
+P1:
+MOV PLAYER, 49
+MOV CUR, 'x'
+
+
+
+JMP BOARD
+
+P2:
+MOV PLAYER, 50
+MOV CUR, 'o'
+JMP BOARD
 
 ; ---------- INITIALIZE ---------------------
 
@@ -273,26 +290,6 @@ MOV DR, 1
 JMP BOARD
 
 JMP EXIT
-
-
-; ------------ PLAYER ----------
-PLRCHANGE:
-
-CMP PLAYER, 49
-JZ P2
-P1:
-MOV PLAYER, 49
-MOV CUR, 'x'
-
-
-
-JMP BOARD
-
-P2:
-MOV PLAYER, 50
-MOV CUR, 'o'
-JMP BOARD
-
 
 ; ------------- BOARD ----------
 BOARD:
