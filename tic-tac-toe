@@ -219,7 +219,6 @@ MOV AH, 7    ; INPUT WITHOUT ECHO
 INT 21H
 jmp dis
 
-JMP TRYAGAIN
 
 
 ; ------------ DRAW ------------
